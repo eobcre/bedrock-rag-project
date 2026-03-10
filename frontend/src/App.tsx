@@ -3,6 +3,7 @@ import Input from "./components/Input";
 import Dropdown from "./components/Dropdown";
 import RetrievalSection from "./sections/Retrieval";
 import LLMAnswerSection from "./sections/LLMAnswer";
+import Model from "./sections/Model";
 
 const retrievalOptions = [
   { label: "Semantic", value: "semantic" },
@@ -89,7 +90,9 @@ const App = () => {
       <section className="col-span-3 section">
         <div className="grid grid-cols-3 gap-3 h-full">
           <div className="bottom">Metrics</div>
-          <div className="bottom">Model</div>
+          <div className="bottom">
+            <Model modelData={ragData?.model ?? ""} />
+          </div>
           <div className="bottom">Sources</div>
         </div>
       </section>
