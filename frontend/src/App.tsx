@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Input from "./components/Input";
-import Dropdown from "./components/DropDown";
-import RetrivalPanel from "./components/RetrivalPanel";
+import Dropdown from "./components/Dropdown";
+import RetrievalSection from "./sections/Retrieval";
+import LLMAnswerSection from "./sections/LLMAnswer";
 
 const retrievalOptions = [
   { label: "Semantic", value: "semantic" },
@@ -15,9 +16,48 @@ const topKOptions = [
   { label: "3", value: 3 },
 ];
 
+type RagResponse = {
+  ok: boolean;
+  query: string;
+  topK: number;
+  answer: string;
+  retrieveChunks: any[];
+  sources: any[];
+  model: string;
+};
+
 const App = () => {
+  const [query, setQuery] = useState("");
   const [retrieval, setRetrieval] = useState("");
   const [topK, setTopK] = useState("");
+  const [ragData, setRagData] = useState<RagResponse | null>(null);
+
+  const API = import.meta.env.VITE_API_URL;
+
+  // send
+  const handleSendRag = async () => {
+    // console.log(query, retrieval, topK);
+
+    try {
+      const res = await fetch(`${API}/api/rag`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query,
+          retrieval,
+          topK,
+        }),
+      });
+
+      const data = await res.json();
+      // console.log("data:", data);
+      setRagData(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div className="grid grid-cols-3 grid-rows-[60px_1fr_1fr] gap-4 bg-gray-100 p-4 min-h-screen">
@@ -25,22 +65,24 @@ const App = () => {
       <section className="col-span-3 flex items-center p-3">
         <div className="grid grid-cols-6 gap-3 w-full">
           <div className="col-span-3">
-            <Input />
+            <Input query={query} onChange={setQuery} />
           </div>
           <Dropdown name="Retrival Options" value={retrieval} options={retrievalOptions} onChange={setRetrieval} />
           <Dropdown name="topK" value={topK} options={topKOptions} onChange={setTopK} />
-          <button className="bg-blue-500 text-white rounded cursor-pointer hover:opacity-70 transition-all duration-300 ease-out">Send</button>
+          <button onClick={handleSendRag} className="bg-blue-500 text-white rounded cursor-pointer hover:opacity-70 transition-all duration-300 ease-out">
+            Send
+          </button>
         </div>
       </section>
 
       {/* middle 1 */}
       <section className="col-span-2 section">
-        <RetrivalPanel />
+        <RetrievalSection />
       </section>
 
       {/* middle 2 */}
       <section className="col-span-1 section">
-        <div className="border border-blue-400 bg-white rounded-sm p-2 h-full">LLM Answer</div>
+        <LLMAnswerSection answerData={ragData?.answer ?? ""} />
       </section>
 
       {/* bottom */}
