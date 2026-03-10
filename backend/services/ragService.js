@@ -16,7 +16,7 @@ export const ragService = async ({ query, retrieval, topK }) => {
       }));
     }) || [];
 
-  // const sources = retrieveChunks.map((chunk) => chunk.location).filter(Boolean);
+  const sources = retrieveChunks.map((chunk) => chunk.location).filter(Boolean);
 
   return {
     ok: true,
