@@ -1,9 +1,11 @@
 import { useState } from "react";
+
 import Input from "./components/Input";
 import Dropdown from "./components/Dropdown";
 import RetrievalSection from "./sections/Retrieval";
 import LLMAnswerSection from "./sections/LLMAnswer";
 import Model from "./sections/Model";
+import Sources from "./sections/Sources";
 
 const retrievalOptions = [
   { label: "Semantic", value: "semantic" },
@@ -93,7 +95,9 @@ const App = () => {
           <div className="bottom">
             <Model modelData={ragData?.model ?? ""} />
           </div>
-          <div className="bottom">Sources</div>
+          <div className="bottom">
+            <Sources srcData={ragData?.sources ?? []} />
+          </div>
         </div>
       </section>
     </div>
