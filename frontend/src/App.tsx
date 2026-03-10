@@ -60,7 +60,7 @@ const App = () => {
   };
 
   return (
-    <div className="grid grid-cols-3 grid-rows-[60px_1fr_1fr] gap-4 bg-gray-100 p-4 min-h-screen">
+    <div className="grid grid-cols-3 grid-rows-[60px_1fr_1fr] gap-4 bg-gray-100 p-4 h-screen">
       {/* top */}
       <section className="col-span-3 flex items-center p-3">
         <div className="grid grid-cols-6 gap-3 w-full">
@@ -81,7 +81,7 @@ const App = () => {
       </section>
 
       {/* middle 2 */}
-      <section className="col-span-1 section">
+      <section className="col-span-1 section overflow-scroll">
         <LLMAnswerSection answerData={ragData?.answer ?? ""} />
       </section>
 
