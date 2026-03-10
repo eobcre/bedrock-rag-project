@@ -77,8 +77,8 @@ const App = () => {
       </section>
 
       {/* middle 1 */}
-      <section className="col-span-2 section">
-        <RetrievalSection />
+      <section className="col-span-2 section overflow-scroll">
+        <RetrievalSection retrievalData={ragData?.retrieveChunks ?? []} />
       </section>
 
       {/* middle 2 */}
