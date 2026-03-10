@@ -24,8 +24,8 @@ export const ragService = async ({ query, retrieval, topK }) => {
     retrieval,
     topK,
     answer,
-    // retrieveChunks,
-    // sources,
-    // model: "Nova",
+    retrieveChunks,
+    sources,
+    model: process.env.MODEL_ID,
   };
 };
