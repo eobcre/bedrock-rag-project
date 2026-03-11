@@ -42,7 +42,7 @@ const App = () => {
         },
         body: JSON.stringify({
           query,
-          topK,
+          topK: Number(topK),
         }),
       });
 
