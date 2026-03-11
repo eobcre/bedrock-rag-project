@@ -20,6 +20,7 @@ type RagResponse = {
   topK: number;
   answer: string;
   retrieveChunks: any[];
+  retrieveChunksCount: number;
   sources: any[];
   model: string;
 };
@@ -84,7 +85,12 @@ const App = () => {
       <section className="col-span-3 section">
         <div className="grid grid-cols-3 gap-3 h-full">
           <div className="bottom">
-            <Metrics />
+            <Metrics
+              metricsData={{
+                topK: ragData?.topK,
+                retrieveChunksCount: ragData?.retrieveChunksCount,
+              }}
+            />{" "}
           </div>
           <div className="bottom">
             <Model modelData={ragData?.model ?? ""} />
