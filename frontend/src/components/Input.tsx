@@ -8,7 +8,7 @@ const Input = ({ query, onChange }: InputProps) => {
     onChange(e.target.value);
   };
 
-  return <input type="text" value={query} onChange={handleChange} className="border border-blue-400 bg-white rounded-sm p-2 w-full" />;
+  return <input type="text" value={query} onChange={handleChange} placeholder="Ask a question about your order, refund, or shipping..." className="border border-blue-400 bg-white rounded-sm p-2 w-full" />;
 };
 
 export default Input;
