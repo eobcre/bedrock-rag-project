@@ -24,6 +24,7 @@ export const ragService = async ({ query, topK }) => {
     topK,
     answer,
     retrieveChunks,
+    retrieveChunksCount: retrieveChunks.length,
     sources,
     model: process.env.MODEL_ID,
   };
