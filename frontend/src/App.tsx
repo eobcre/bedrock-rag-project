@@ -4,6 +4,7 @@ import Input from "./components/Input";
 import Dropdown from "./components/Dropdown";
 import RetrievalSection from "./sections/Retrieval";
 import LLMAnswerSection from "./sections/LLMAnswer";
+import Metrics from "./sections/Metrics";
 import Model from "./sections/Model";
 import Sources from "./sections/Sources";
 
@@ -82,7 +83,9 @@ const App = () => {
       {/* bottom */}
       <section className="col-span-3 section">
         <div className="grid grid-cols-3 gap-3 h-full">
-          <div className="bottom">Metrics</div>
+          <div className="bottom">
+            <Metrics />
+          </div>
           <div className="bottom">
             <Model modelData={ragData?.model ?? ""} />
           </div>
