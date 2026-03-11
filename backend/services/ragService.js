@@ -1,14 +1,11 @@
 import { knowledgeBaseService } from "./knowledgeBaseService.js";
 
-export const ragService = async ({ query, retrieval, topK }) => {
-  const kbRes = await knowledgeBaseService({ query });
+export const ragService = async ({ query, topK }) => {
+  const kbRes = await knowledgeBaseService({ query, topK });
   const answer = kbRes.output?.text || "";
 
-  // dummy data
-  // const chunks = [{ id: "doc1", text: "AWS is a cloud platform." }]; // RAG result
-  // const answer = "AWS is a cloud computing platform."; // bedrock answer
-
-  const retrieveChunks =
+  // chunks
+  const rawChunks =
     kbRes.citations?.flatMap((citation) => {
       return citation.retrievedReferences.map((ref) => ({
         text: ref.content?.text,
@@ -16,12 +13,14 @@ export const ragService = async ({ query, retrieval, topK }) => {
       }));
     }) || [];
 
+  const retrieveChunks = rawChunks.slice(0, Number(topK));
+
+  // sources
   const sources = retrieveChunks.map((chunk) => chunk.location).filter(Boolean);
 
   return {
     ok: true,
     query,
-    retrieval,
     topK,
     answer,
     retrieveChunks,
