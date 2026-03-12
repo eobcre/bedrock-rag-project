@@ -8,12 +8,6 @@ import Metrics from "./sections/Metrics";
 import Model from "./sections/Model";
 import Sources from "./sections/Sources";
 
-const topKOptions = [
-  { label: "3", value: 3 },
-  { label: "5", value: 5 },
-  { label: "10", value: 10 },
-];
-
 type RagResponse = {
   ok: boolean;
   query: string;
@@ -29,6 +23,12 @@ const App = () => {
   const [query, setQuery] = useState("");
   const [topK, setTopK] = useState("");
   const [ragData, setRagData] = useState<RagResponse | null>(null);
+
+  const topKOptions = [
+    { label: "3", value: 3 },
+    { label: "5", value: 5 },
+    { label: "10", value: 10 },
+  ];
 
   const API = import.meta.env.VITE_API_URL;
 
@@ -90,7 +90,7 @@ const App = () => {
                 topK: ragData?.topK,
                 retrieveChunksCount: ragData?.retrieveChunksCount,
               }}
-            />{" "}
+            />
           </div>
           <div className="bottom">
             <Model modelData={ragData?.model ?? ""} />
