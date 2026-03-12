@@ -1,7 +1,7 @@
 import { knowledgeBaseService } from "./knowledgeBaseService.js";
 
 export const ragService = async ({ query, topK }) => {
-  const kbRes = await knowledgeBaseService({ query, topK });
+  const { res: kbRes, totalLatency } = await knowledgeBaseService({ query, topK });
   const answer = kbRes.output?.text || "";
 
   // chunks
@@ -22,6 +22,7 @@ export const ragService = async ({ query, topK }) => {
     ok: true,
     query,
     topK,
+    totalLatency,
     answer,
     retrieveChunks,
     retrieveChunksCount: retrieveChunks.length,

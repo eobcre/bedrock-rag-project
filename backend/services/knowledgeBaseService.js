@@ -2,6 +2,8 @@ import { RetrieveAndGenerateCommand } from "@aws-sdk/client-bedrock-agent-runtim
 import { bedrockClient } from "../utils/bedrockClient.js";
 
 export const knowledgeBaseService = async ({ query, topK }) => {
+  const start = Date.now();
+
   const cmd = new RetrieveAndGenerateCommand({
     input: {
       text: query,
@@ -21,5 +23,8 @@ export const knowledgeBaseService = async ({ query, topK }) => {
   });
 
   const res = await bedrockClient.send(cmd);
-  return res;
+
+  const totalLatency = Date.now() - start;
+
+  return { res, totalLatency };
 };
