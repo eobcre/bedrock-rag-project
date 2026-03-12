@@ -12,6 +12,7 @@ type RagResponse = {
   ok: boolean;
   query: string;
   topK: number;
+  totalLatency: number;
   answer: string;
   retrieveChunks: any[];
   retrieveChunksCount: number;
@@ -23,6 +24,8 @@ const App = () => {
   const [query, setQuery] = useState("");
   const [topK, setTopK] = useState("");
   const [ragData, setRagData] = useState<RagResponse | null>(null);
+  const [active, setActive] = useState(false);
+  const [error, setError] = useState(false);
 
   const topKOptions = [
     { label: "3", value: 3 },
@@ -51,8 +54,12 @@ const App = () => {
       const data = await res.json();
       // console.log("data:", data);
       setRagData(data);
+      setActive(true);
+      setError(false);
     } catch (err) {
       console.error(err);
+      setActive(false);
+      setError(true);
     }
   };
 
@@ -73,12 +80,12 @@ const App = () => {
 
       {/* middle 1 */}
       <section className="col-span-2 section overflow-scroll">
-        <RetrievalSection retrievalData={ragData?.retrieveChunks ?? []} />
+        <RetrievalSection retrievalData={ragData?.retrieveChunks ?? []} active={active} error={error} />
       </section>
 
       {/* middle 2 */}
       <section className="col-span-1 section overflow-scroll">
-        <LLMAnswerSection answerData={ragData?.answer ?? ""} />
+        <LLMAnswerSection answerData={ragData?.answer ?? ""} active={active} error={error} />
       </section>
 
       {/* bottom */}
@@ -89,14 +96,17 @@ const App = () => {
               metricsData={{
                 topK: ragData?.topK,
                 retrieveChunksCount: ragData?.retrieveChunksCount,
+                totalLatency: ragData?.totalLatency,
               }}
+              active={active}
+              error={error}
             />
           </div>
           <div className="bottom">
-            <Model modelData={ragData?.model ?? ""} />
+            <Model modelData={ragData?.model ?? ""} active={active} error={error} />
           </div>
           <div className="bottom">
-            <Sources srcData={ragData?.sources ?? []} />
+            <Sources srcData={ragData?.sources ?? []} active={active} error={error} />
           </div>
         </div>
       </section>
