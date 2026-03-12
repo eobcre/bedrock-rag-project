@@ -26,6 +26,7 @@ const App = () => {
   const [ragData, setRagData] = useState<RagResponse | null>(null);
   const [active, setActive] = useState(false);
   const [error, setError] = useState(false);
+  const [validationError, setValidationError] = useState("");
 
   const topKOptions = [
     { label: "3", value: 3 },
@@ -38,6 +39,13 @@ const App = () => {
   // send
   const handleSendRag = async () => {
     // console.log(query, retrieval, topK);
+
+    if (!query || !topK) {
+      setValidationError("* All fields are required.");
+      return;
+    }
+
+    setValidationError("");
 
     try {
       const res = await fetch(`${API}/api/rag`, {
@@ -72,9 +80,10 @@ const App = () => {
             <Input query={query} onChange={setQuery} />
           </div>
           <Dropdown name="topK" value={topK} options={topKOptions} onChange={setTopK} />
-          <button onClick={handleSendRag} className="bg-blue-500 text-white rounded cursor-pointer hover:opacity-70 transition-all duration-300 ease-out">
+          <button onClick={handleSendRag} className="bg-blue-500 text-white rounded cursor-pointer hover:opacity-70 transition-all duration-300 ease-out h-10.5">
             Send
           </button>
+          <div className="col-span-5 -mt-2">{validationError && <span className="text-red-500 text-sm">{validationError}</span>}</div>
         </div>
       </section>
 
