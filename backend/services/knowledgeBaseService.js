@@ -1,5 +1,5 @@
 import { RetrieveAndGenerateCommand } from "@aws-sdk/client-bedrock-agent-runtime";
-import { bedrockClient } from "../utils/bedrockClient.js";
+import { bedrockClient } from "./bedrockClient.js";
 
 export const knowledgeBaseService = async ({ query, topK }) => {
   const start = Date.now();
