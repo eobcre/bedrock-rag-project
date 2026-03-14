@@ -5,6 +5,7 @@
 
 ## Tech Stack
 - Amazon Bedrock
+- Amazon Bedrock Knowledge Base
 - AWS Lambda
 - Amazon API Gateway
 - Amazon S3 Vectors
