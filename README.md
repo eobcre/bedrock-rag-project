@@ -1,4 +1,4 @@
-# RAG Portfolio
+# AWS x RAG
 
 ## Architecture
 <img src="./docs/architecture.png" width="600">
@@ -7,13 +7,13 @@
 - Amazon Bedrock
 - AWS Lambda
 - Amazon API Gateway
+- Amazon S3 Vectors
 - React (Vite)
 - Tailwind
 
 ## Features
 - RAG retrieval
 - topK control
-- Semantic search
 - Semantic search
 
 ## Demo
