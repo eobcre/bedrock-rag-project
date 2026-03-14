@@ -34,8 +34,6 @@ const App = () => {
     { label: "10", value: 10 },
   ];
 
-  const API = import.meta.env.VITE_API_URL;
-
   // send
   const handleSendRag = async () => {
     // console.log(query, retrieval, topK);
@@ -48,7 +46,7 @@ const App = () => {
     setValidationError("");
 
     try {
-      const res = await fetch(`${API}/api/rag`, {
+      const res = await fetch(`/api/rag`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
