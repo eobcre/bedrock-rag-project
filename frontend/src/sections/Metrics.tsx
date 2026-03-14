@@ -20,17 +20,19 @@ const Metrics = ({ metricsData, active, error }: MetricsProps) => {
       <div className="flex items-center gap-2">
         {active && <span className="inline-block bg-green-500 rounded-full w-2 h-2"></span>}
         {error && <span className="inline-block bg-red-500 rounded-full w-2 h-2"></span>}
-        <h1 className="font-bold">Metrics:</h1>
+        <h1 className="text-gray-700 font-bold mb-1">Metrics</h1>
       </div>
-      {metrics.map((item) => (
-        <div key={item.id} className="border-b-2 border-gray-100">
-          <span className="text-sm font-bold mr-2">{item.label}:</span>
-          <span>
-            {item.value}
-            {item.label === "Total Latency" && item.value !== undefined && " ms"}
-          </span>
-        </div>
-      ))}
+      <div className="flex flex-col gap-2">
+        {metrics.map((item) => (
+          <div key={item.id} className="flex justify-between">
+            <span className="text-gray-700 text-sm">{item.label}</span>
+            <span className="text-gray-700 text-sm font-medium">
+              {item.value}
+              {item.label === "Total Latency" && item.value !== undefined && " ms"}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

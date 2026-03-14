@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Icon } from "@iconify/react";
 
 import Input from "./components/Input";
 import Dropdown from "./components/Dropdown";
@@ -70,16 +71,16 @@ const App = () => {
   };
 
   return (
-    <div className="grid grid-cols-3 grid-rows-[60px_1fr_1fr] gap-4 bg-gray-100 p-4 h-screen">
+    <div className="grid grid-cols-4 grid-rows-[60px_1fr_1fr] gap-6 bg-gray-100 px-20 pt-8 pb-14 h-screen">
       {/* top */}
-      <section className="col-span-3 flex items-center p-3">
+      <section className="col-span-4 flex items-center">
         <div className="grid grid-cols-5 gap-3 w-full">
           <div className="col-span-3">
             <Input query={query} onChange={setQuery} />
           </div>
           <Dropdown name="topK" value={topK} options={topKOptions} onChange={setTopK} />
           <button onClick={handleSendRag} className="bg-blue-500 text-white rounded cursor-pointer hover:opacity-70 transition-all duration-300 ease-out h-10.5">
-            Send
+            <Icon icon="material-symbols:search-rounded" className="mx-auto w-7 h-7" />
           </button>
           <div className="col-span-5 -mt-2">{validationError && <span className="text-red-500 text-sm">{validationError}</span>}</div>
         </div>
@@ -91,13 +92,13 @@ const App = () => {
       </section>
 
       {/* middle 2 */}
-      <section className="col-span-1 section overflow-scroll">
+      <section className="col-span-2 section overflow-scroll">
         <LLMAnswerSection answerData={ragData?.answer ?? ""} active={active} error={error} />
       </section>
 
       {/* bottom */}
-      <section className="col-span-3 section">
-        <div className="grid grid-cols-3 gap-3 h-full">
+      <section className="col-span-4 section">
+        <div className="grid grid-cols-4 gap-3 h-full">
           <div className="bottom">
             <Metrics
               metricsData={{
@@ -112,7 +113,7 @@ const App = () => {
           <div className="bottom">
             <Model modelData={ragData?.model ?? ""} active={active} error={error} />
           </div>
-          <div className="bottom">
+          <div className="bottom col-span-2">
             <Sources srcData={ragData?.sources ?? []} active={active} error={error} />
           </div>
         </div>

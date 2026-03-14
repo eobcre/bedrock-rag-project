@@ -10,6 +10,6 @@
   }
 
   .bottom {
-    @apply border border-blue-400 bg-white rounded-sm p-3;
+    @apply border border-blue-400 bg-white rounded-sm p-4;
   }
 }

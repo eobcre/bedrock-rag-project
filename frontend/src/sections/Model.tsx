@@ -10,7 +10,7 @@ const Model = ({ modelData, active, error }: ModelProps) => {
       <div className="flex items-center gap-2">
         {active && <span className="inline-block bg-green-500 rounded-full w-2 h-2"></span>}
         {error && <span className="inline-block bg-red-500 rounded-full w-2 h-2"></span>}
-        <h1 className="font-bold">Model:</h1>
+        <h1 className="text-gray-700 font-bold">Model</h1>
       </div>
       <p>{modelData}</p>
     </div>
