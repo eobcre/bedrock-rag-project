@@ -1,4 +1,5 @@
 # AWS x RAG
+RAG application using Amazon Bedrock Knowledge Bases to retrieve relevant context and generate LLM responses.
 
 ## Architecture
 <img src="./docs/architecture.png" width="600">
