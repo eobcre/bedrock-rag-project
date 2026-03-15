@@ -1,6 +1,10 @@
 import { knowledgeBaseService } from "./knowledgeBaseService.js";
 
 export const ragService = async ({ query, topK }) => {
+  // console.log("KNOWLEDGE_BASE_ID:", process.env.KNOWLEDGE_BASE_ID);
+  // console.log("MODEL_ID:", process.env.MODEL_ID);
+  // console.log("AWS_REGION:", process.env.AWS_REGION);
+
   const { res: kbRes, totalLatency } = await knowledgeBaseService({ query, topK });
   const answer = kbRes.output?.text || "";
 
