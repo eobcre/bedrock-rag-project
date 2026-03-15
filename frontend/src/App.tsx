@@ -71,34 +71,31 @@ const App = () => {
   };
 
   return (
-    <div className="grid grid-cols-4 grid-rows-[60px_1fr_1fr] gap-6 bg-gray-100 px-20 pt-8 pb-14 h-screen">
+    <div className="md:grid md:grid-cols-4 md:grid-rows-[60px_1fr_1fr] md:gap-6 bg-gray-100 px-5 md:px-20 py-4 md:pt-8 md:pb-14 min-h-screen md:h-screen">
       {/* top */}
-      <section className="col-span-4 flex items-center">
-        <div className="grid grid-cols-5 gap-3 w-full">
-          <div className="col-span-3">
+      <section className="md:col-span-4 md:flex md:items-center py-6 md:py-0">
+        <div className="grid md:grid-cols-5 gap-3 w-full">
+          <div className="md:col-span-3">
             <Input query={query} onChange={setQuery} />
           </div>
           <Dropdown name="topK" value={topK} options={topKOptions} onChange={setTopK} />
           <button onClick={handleSendRag} className="bg-blue-500 text-white rounded cursor-pointer hover:opacity-70 transition-all duration-300 ease-out h-10.5">
             <Icon icon="material-symbols:search-rounded" className="mx-auto w-7 h-7" />
           </button>
-          <div className="col-span-5 -mt-2">{validationError && <span className="text-red-500 text-sm">{validationError}</span>}</div>
+          <div className="md:col-span-5 -mt-2">{validationError && <span className="text-red-500 text-sm">{validationError}</span>}</div>
         </div>
       </section>
-
       {/* middle 1 */}
-      <section className="col-span-2 section overflow-scroll">
+      <section className="md:col-span-2 section overflow-scroll mb-5 md:mb-0 h-80">
         <RetrievalSection retrievalData={ragData?.retrieveChunks ?? []} active={active} error={error} />
       </section>
-
       {/* middle 2 */}
-      <section className="col-span-2 section overflow-scroll">
+      <section className="col-span-1 md:col-span-2 section overflow-scroll mb-5 md:mb-0 h-80">
         <LLMAnswerSection answerData={ragData?.answer ?? ""} active={active} error={error} />
       </section>
-
       {/* bottom */}
-      <section className="col-span-4 section">
-        <div className="grid grid-cols-4 gap-3 h-full">
+      <section className="section md:col-span-4">
+        <div className="grid grid-cols-1 gap-3 h-full md:grid-cols-4">
           <div className="bottom">
             <Metrics
               metricsData={{
@@ -113,7 +110,7 @@ const App = () => {
           <div className="bottom">
             <Model modelData={ragData?.model ?? ""} active={active} error={error} />
           </div>
-          <div className="bottom col-span-2">
+          <div className="bottom md:col-span-2">
             <Sources srcData={ragData?.sources ?? []} active={active} error={error} />
           </div>
         </div>
