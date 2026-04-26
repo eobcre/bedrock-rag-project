@@ -1,27 +1,47 @@
-# AWS x RAG
+# AWS x RAG (Retrieval-Augmented Generation)
 RAG application using Amazon Bedrock Knowledge Bases to retrieve relevant context and generate LLM responses.
 
-### 🏗 Architecture 🏗
-#### Diagram created with Lucidchart
-<img src="./docs/architecture.png" width="600">
+### 🏗 Architecture
+<p>
+  <img src="./docs/architecture.png" alt="Image" width="600" />
+  <br />
+  <sub>Architecture diagram created with Lucidchart</sub>
+</p>
 
-### 🚀 Features 🚀
+### 🚀 Features
 - RAG retrieval
 - topK control
 - Semantic search
 
-### 🛠 Tech Stack 🛠
-#### Frontend
+### 🛠 Tech Stack
+#### ▫️ Frontend
 - React (Vite)
 - Tailwind
 
-#### Backend / AWS
+#### ▫️ Backend / AWS
 - Amazon Bedrock
 - Amazon Bedrock Knowledge Base
 - AWS Lambda
 - Amazon API Gateway
 - Amazon S3 Vectors
 
-### 📦 Setup 📦
-1. `npm install`
-2. `npm run dev`
+### 📦 Installation
+Clone the repository and install dependencies.
+```bash
+git clone https://github.com/eobcre/bedrock-rag-project.git
+cd bedrock-rag-project
+npm install
+```
+
+**Environment Variables**
+```
+KNOWLEDGE_BASE_ID=your_knowledge_base_id
+MODEL_ID=your_model_id
+```
+
+**Run Locally**
+```
+npm run dev
+```
+
+Note: This application requires a deployed AWS backend (API Gateway, Lambda and Bedrock).
