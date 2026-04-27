@@ -8,18 +8,20 @@ RAG (Retrieval-Augmented Generation) application using Amazon Bedrock Knowledge 
 
 #### ▫️ Indexing / Ingestion phase
 
-1. Manual document ingestion to S3
-2. Text chunking
-3. Each chunk is converted into a numerical vector by embedding model on Bedrock Knowledge Base
-4. Generated embeddings are indexed to enable search
-5. Vectors are stored in S3 Vectors
+1. Documents are uploaded to S3.
+2. Text is split into smaller chunks.
+3. Each chunk is converted into a vector using an embedding model.
+4. Embeddings are indexed for similarity search.
+5. Vectors are stored in S3 Vectors.
 
 #### ▫️ Retrieval / Generation phase
 
-1. User query
-2. Query is converted into a vector by embedding model on Bedrock Knowledge Base
-3. Starts vector similarity search
-4. Retrieved document chunks are used for LLM
+1. User sends a query.
+2. Query is converted into a vector using the same embedding model.
+3. Vector similarity search is performed.
+4. Relevant document chunks are retrieved.
+5. Retrieved context is added into the LLM prompt.
+6. LLM generates a response based on the retrieved context.
 
 ### 🏗 Architecture
 
