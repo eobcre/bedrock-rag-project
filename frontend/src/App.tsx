@@ -122,7 +122,7 @@ const App = () => {
       </section>
 
       {/* loader */}
-      {loading && <Loader  />}
+      {loading && <Loader />}
     </div>
   );
 };
