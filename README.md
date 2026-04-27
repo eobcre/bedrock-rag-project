@@ -1,6 +1,6 @@
-# AWS x RAG (Retrieval-Augmented Generation)
+# RAG-Powered Knowledge System
 
-RAG application using Amazon Bedrock Knowledge Bases to retrieve relevant context and generate LLM responses.
+RAG (Retrieval-Augmented Generation) application using Amazon Bedrock Knowledge Bases to retrieve relevant context and generate LLM responses.
 
 <img src="./docs/rag.png" alt="Image" width="600" />
 
