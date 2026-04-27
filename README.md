@@ -31,16 +31,18 @@ RAG (Retrieval-Augmented Generation) application using Amazon Bedrock Knowledge 
 
 ### 🚀 Features
 
-- RAG retrieval
-- topK control
-- Semantic search
+- RAG based context retrieval for accurate responses.
+- Configurable top-K retrieval for optimized results.
+- Semantic search using vector embeddings.
+- Real-time command status indicators. (green: success, red: error)
+- Displays retrieval results, LLM responses, model details, metrics, and sources references.
 
 ### 🛠 Tech Stack
 
 #### ▫️ Frontend
 
 - React (Vite)
-- Tailwind
+- Tailwind CSS
 
 #### ▫️ Backend / AWS
 
