@@ -4,11 +4,11 @@ RAG (Retrieval-Augmented Generation) application using Amazon Bedrock Knowledge 
 
 <img src="./docs/rag.png" alt="Image" width="600" />
 
-### 🧠 How It Works
+## 🧠 How It Works
 
 #### ▫️ Indexing / Ingestion phase
 
-1. Documents are uploaded to S3.
+1. Document is uploaded to S3.
 2. Text is split into smaller chunks.
 3. Each chunk is converted into a vector using an embedding model.
 4. Embeddings are indexed for similarity search.
@@ -23,7 +23,16 @@ RAG (Retrieval-Augmented Generation) application using Amazon Bedrock Knowledge 
 5. Retrieved context is added into the LLM prompt.
 6. LLM generates a response based on the retrieved context.
 
-### 🏗 Architecture
+## 📄 Data
+
+Custom Support Manual including:
+
+- Order cancellation policies
+- Refund policies
+- Shipping timelines
+- Customer support hours
+
+## 🏗 Architecture
 
 <p>
   <img src="./docs/architecture.png" alt="Image" width="600" />
@@ -31,7 +40,13 @@ RAG (Retrieval-Augmented Generation) application using Amazon Bedrock Knowledge 
   <sub>Architecture diagram created with Lucidchart</sub>
 </p>
 
-### 🚀 Features
+## 💬 Example Queries
+
+- "What is your refund policy?"
+- "How long does shipping take?"
+- "Can I cancel my order?"
+
+## 🚀 Features
 
 - RAG based context retrieval for accurate responses.
 - Configurable top-K retrieval for optimized results.
@@ -39,7 +54,7 @@ RAG (Retrieval-Augmented Generation) application using Amazon Bedrock Knowledge 
 - Real-time command status indicators. (green: success, red: error)
 - Displays retrieval results, LLM responses, model details, metrics, and sources references.
 
-### 🛠 Tech Stack
+## 🛠 Tech Stack
 
 #### ▫️ Frontend
 
@@ -54,7 +69,7 @@ RAG (Retrieval-Augmented Generation) application using Amazon Bedrock Knowledge 
 - Amazon API Gateway
 - Amazon S3 Vectors
 
-### 📦 Installation
+## 📦 Installation
 
 Clone the repository and install dependencies.
 
