@@ -9,7 +9,7 @@ type SourceProps = {
 };
 
 const Sources = ({ active, error, ragData }: SourceProps) => {
-  console.log("ragData:", ragData);
+  // console.log("ragData:", ragData);
   const uri = ragData?.sources[0]?.s3Location?.uri;
 
   return (
