@@ -6,7 +6,7 @@ export const ragService = async ({ query, topK }) => {
   // console.log("AWS_REGION:", process.env.AWS_REGION);
 
   const { res: kbRes, totalLatency } = await knowledgeBaseService({ query, topK });
-  const { embeddingModelArn, vectorStoreType } = await getKnowledgeBaseInfo();
+  const { embeddingModel, vectorStoreType } = await getKnowledgeBaseInfo();
   const answer = kbRes.output?.text || "";
 
   // chunks
@@ -33,7 +33,7 @@ export const ragService = async ({ query, topK }) => {
     retrieveChunksCount: retrieveChunks.length,
     sources,
     model: process.env.MODEL_ID,
-    embeddingModelArn,
+    embeddingModel,
     vectorStoreType,
   };
 };

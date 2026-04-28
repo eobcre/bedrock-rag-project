@@ -49,21 +49,32 @@ export const knowledgeBaseService = async ({ query, topK }) => {
  * - used for displaying model configuration in ui
  */
 
+const EMBEDDING_MODEL_MAP = {
+  "amazon.titan-embed-text-v2": "Titan Text Embeddings v2",
+};
+
+const VECTOR_STORE_MAP = {
+  S3_VECTORS: "Amazon S3 Vectors",
+};
+
 export const getKnowledgeBaseInfo = async () => {
   const cmd = new GetKnowledgeBaseCommand({
     knowledgeBaseId: process.env.KNOWLEDGE_BASE_ID,
   });
 
   const res = await bedrockAgentClient.send(cmd);
-  console.log("getKnowledgeBaseInfo res:", res);
+  // console.log("getKnowledgeBaseInfo res:", res);
 
   // get embedding model
   const embeddingModelArn = res.knowledgeBase?.knowledgeBaseConfiguration?.vectorKnowledgeBaseConfiguration?.embeddingModelArn;
   // get vector store type
   const vectorStoreType = res.knowledgeBase?.storageConfiguration?.type;
 
+  const embeddingModelId = embeddingModelArn?.split("/").pop().split(":")[0];
+  // console.log("embeddingModelId:", embeddingModelId);
+
   return {
-    embeddingModelArn,
-    vectorStoreType,
+    embeddingModel: EMBEDDING_MODEL_MAP[embeddingModelId] || embeddingModelId,
+    vectorStoreType: VECTOR_STORE_MAP[vectorStoreType] || vectorStoreType,
   };
 };
