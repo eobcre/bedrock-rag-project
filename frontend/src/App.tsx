@@ -28,44 +28,6 @@ const App = () => {
   ];
 
   // send
-  // const handleSendRag = async () => {
-  //   // console.log(query, retrieval, topK);
-
-  //   if (!query || !topK) {
-  //     setValidationError("* All fields are required.");
-  //     return;
-  //   }
-
-  //   setValidationError("");
-  //   setLoading(true);
-
-  //   try {
-  //     const res = await fetch(`/api/rag`, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         query,
-  //         topK: Number(topK),
-  //       }),
-  //     });
-
-  //     const data = await res.json();
-  //     // console.log("data:", data);
-  //     setRagData(data);
-  //     setActive(true);
-  //     setError(false);
-  //   } catch (err) {
-  //     console.error(err);
-  //     setActive(false);
-  //     setError(true);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // local test use
   const handleSendRag = async () => {
     // console.log(query, retrieval, topK);
 
@@ -78,7 +40,7 @@ const App = () => {
     setLoading(true);
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/rag`, {
+      const res = await fetch(`/api/rag`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -103,7 +65,45 @@ const App = () => {
     }
   };
 
-  console.log("ragData:", ragData);
+  // local test use
+  // const handleSendRag = async () => {
+  //   // console.log(query, retrieval, topK);
+
+  //   if (!query || !topK) {
+  //     setValidationError("* All fields are required.");
+  //     return;
+  //   }
+
+  //   setValidationError("");
+  //   setLoading(true);
+
+  //   try {
+  //     const res = await fetch(`${import.meta.env.VITE_API_URL}/api/rag`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         query,
+  //         topK: Number(topK),
+  //       }),
+  //     });
+
+  //     const data = await res.json();
+  //     // console.log("data:", data);
+  //     setRagData(data);
+  //     setActive(true);
+  //     setError(false);
+  //   } catch (err) {
+  //     console.error(err);
+  //     setActive(false);
+  //     setError(true);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  // console.log("ragData:", ragData);
 
   return (
     <div className="lg:grid lg:grid-cols-4 lg:grid-rows-[60px_1fr_1fr] lg:gap-6 bg-gray-100 px-5 lg:px-20 py-4 lg:pt-8 lg:pb-14 min-h-screen lg:h-screen">
