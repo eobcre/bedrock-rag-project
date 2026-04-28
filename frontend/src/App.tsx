@@ -10,17 +10,7 @@ import Metrics from "./sections/Metrics";
 import Model from "./sections/Model";
 import Sources from "./sections/Sources";
 
-type RagResponse = {
-  ok: boolean;
-  query: string;
-  topK: number;
-  totalLatency: number;
-  answer: string;
-  retrieveChunks: any[];
-  retrieveChunksCount: number;
-  sources: any[];
-  model: string;
-};
+import type { RagResponse } from "./type/ragResponseType";
 
 const App = () => {
   const [query, setQuery] = useState("");
@@ -38,6 +28,44 @@ const App = () => {
   ];
 
   // send
+  // const handleSendRag = async () => {
+  //   // console.log(query, retrieval, topK);
+
+  //   if (!query || !topK) {
+  //     setValidationError("* All fields are required.");
+  //     return;
+  //   }
+
+  //   setValidationError("");
+  //   setLoading(true);
+
+  //   try {
+  //     const res = await fetch(`/api/rag`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         query,
+  //         topK: Number(topK),
+  //       }),
+  //     });
+
+  //     const data = await res.json();
+  //     // console.log("data:", data);
+  //     setRagData(data);
+  //     setActive(true);
+  //     setError(false);
+  //   } catch (err) {
+  //     console.error(err);
+  //     setActive(false);
+  //     setError(true);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  // local test use
   const handleSendRag = async () => {
     // console.log(query, retrieval, topK);
 
@@ -50,7 +78,7 @@ const App = () => {
     setLoading(true);
 
     try {
-      const res = await fetch(`/api/rag`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/rag`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,6 +103,8 @@ const App = () => {
     }
   };
 
+  console.log("ragData:", ragData);
+
   return (
     <div className="lg:grid lg:grid-cols-4 lg:grid-rows-[60px_1fr_1fr] lg:gap-6 bg-gray-100 px-5 lg:px-20 py-4 lg:pt-8 lg:pb-14 min-h-screen lg:h-screen">
       {/* top */}
@@ -92,31 +122,23 @@ const App = () => {
       </section>
       {/* middle 1 */}
       <section className="lg:col-span-2 section overflow-scroll mb-5 lg:mb-0 h-80">
-        <RetrievalSection retrievalData={ragData?.retrieveChunks ?? []} active={active} error={error} />
+        <RetrievalSection active={active} error={error} ragData={ragData} />
       </section>
       {/* middle 2 */}
       <section className="col-span-1 lg:col-span-2 section overflow-scroll mb-5 lg:mb-0 h-80">
-        <LLMAnswerSection answerData={ragData?.answer ?? ""} active={active} error={error} />
+        <LLMAnswerSection active={active} error={error} ragData={ragData} />
       </section>
       {/* bottom */}
       <section className="section md:col-span-4">
         <div className="grid grid-cols-1 gap-3 h-full lg:grid-cols-4">
           <div className="bottom">
-            <Metrics
-              metricsData={{
-                topK: ragData?.topK,
-                retrieveChunksCount: ragData?.retrieveChunksCount,
-                totalLatency: ragData?.totalLatency,
-              }}
-              active={active}
-              error={error}
-            />
+            <Metrics active={active} error={error} ragData={ragData} />
           </div>
           <div className="bottom">
-            <Model modelData={ragData?.model ?? ""} active={active} error={error} />
+            <Model active={active} error={error} ragData={ragData} />
           </div>
           <div className="bottom lg:col-span-2">
-            <Sources srcData={ragData?.sources ?? []} active={active} error={error} />
+            <Sources active={active} error={error} ragData={ragData} />
           </div>
         </div>
       </section>

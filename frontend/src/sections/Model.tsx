@@ -1,33 +1,18 @@
-type RagResponse = {
-  ok: boolean;
-  query: string;
-  topK: number;
-  totalLatency: number;
-  answer: string;
-  retrieveChunks: any[];
-  retrieveChunksCount: number;
-  sources: any[];
-  model: string;
-  embeddingModelArn: string;
-  vectorStoreType: string;
-};
+import type { RagResponse } from "../type/ragResponseType";
+
+type GetRagResponseType = Pick<RagResponse, "model" | "embeddingModelArn" | "vectorStoreType">;
 
 type ModelProps = {
-  modelData?: {
-    model: string;
-    embeddingModel: string;
-    vectorStore: string;
-  };
   active: boolean;
   error: boolean;
-  ragData: RagResponse | null;
+  ragData: GetRagResponseType | null;
 };
 
-const Model = ({ modelData, active, error, ragData }: ModelProps) => {
+const Model = ({ active, error, ragData }: ModelProps) => {
   const items = [
-    { id: 1, label: "Model Name", name: modelData?.model },
-    { id: 2, label: "Embedding Model", name: modelData?.embeddingModel },
-    { id: 3, label: "Vector Store Type", name: modelData?.vectorStore },
+    { id: 1, label: "Model Name", name: ragData?.model },
+    { id: 2, label: "Embedding Model", name: ragData?.embeddingModelArn },
+    { id: 3, label: "Vector Store Type", name: ragData?.vectorStoreType },
   ];
 
   return (
