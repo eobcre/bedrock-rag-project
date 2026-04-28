@@ -1,4 +1,4 @@
-import { knowledgeBaseService } from "./knowledgeBaseService.js";
+import { knowledgeBaseService, getKnowledgeBaseInfo } from "./knowledgeBaseService.js";
 
 export const ragService = async ({ query, topK }) => {
   // console.log("KNOWLEDGE_BASE_ID:", process.env.KNOWLEDGE_BASE_ID);
@@ -6,6 +6,7 @@ export const ragService = async ({ query, topK }) => {
   // console.log("AWS_REGION:", process.env.AWS_REGION);
 
   const { res: kbRes, totalLatency } = await knowledgeBaseService({ query, topK });
+  const { embeddingModelArn, vectorStoreType } = await getKnowledgeBaseInfo();
   const answer = kbRes.output?.text || "";
 
   // chunks
@@ -32,5 +33,7 @@ export const ragService = async ({ query, topK }) => {
     retrieveChunksCount: retrieveChunks.length,
     sources,
     model: process.env.MODEL_ID,
+    embeddingModelArn,
+    vectorStoreType,
   };
 };
