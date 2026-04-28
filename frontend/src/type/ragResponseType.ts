@@ -22,6 +22,6 @@ export type RagResponse = {
   retrieveChunksCount: number;
   sources: RetrieveChunkLocation[];
   model: string;
-  embeddingModelArn: string;
+  embeddingModel: string;
   vectorStoreType: string;
 };

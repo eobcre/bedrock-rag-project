@@ -1,6 +1,6 @@
 import type { RagResponse } from "../type/ragResponseType";
 
-type GetRagResponseType = Pick<RagResponse, "model" | "embeddingModelArn" | "vectorStoreType">;
+type GetRagResponseType = Pick<RagResponse, "model" | "embeddingModel" | "vectorStoreType">;
 
 type ModelProps = {
   active: boolean;
@@ -11,7 +11,7 @@ type ModelProps = {
 const Model = ({ active, error, ragData }: ModelProps) => {
   const items = [
     { id: 1, label: "Model Name", name: ragData?.model },
-    { id: 2, label: "Embedding Model", name: ragData?.embeddingModelArn },
+    { id: 2, label: "Embedding Model", name: ragData?.embeddingModel },
     { id: 3, label: "Vector Store Type", name: ragData?.vectorStoreType },
   ];
 
