@@ -53,9 +53,12 @@ const App = () => {
 
       const data = await res.json();
       // console.log("data:", data);
+
       setRagData(data);
       setActive(true);
       setError(false);
+      setQuery("");
+      setTopK("");
     } catch (err) {
       console.error(err);
       setActive(false);
@@ -64,8 +67,6 @@ const App = () => {
       setLoading(false);
     }
   };
-
-  // console.log("ragData:", ragData);
 
   return (
     <div className="lg:grid lg:grid-cols-4 lg:grid-rows-[60px_1fr_1fr] lg:gap-6 bg-gray-100 px-5 lg:px-20 py-4 lg:pt-8 lg:pb-14 min-h-screen lg:h-screen">
