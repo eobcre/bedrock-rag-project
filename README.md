@@ -40,11 +40,20 @@ Custom Support Manual including:
   <sub>Architecture diagram created with Lucidchart</sub>
 </p>
 
-## 💬 Example Queries
+## 🛠️ Backend Architecture
 
-- "What is your refund policy?"
-- "How long does shipping take?"
-- "Can I cancel my order?"
+Backend is designed to separate development and production environments while sharing the same service logic.
+
+- `lambda/`
+  - Entry point for AWS Lambda. (`index.js`)
+  - Handles API Gateway requests.
+
+- `local/`
+  - Express.js server for local development. (`server.js`)
+  - Includes routes and controllers.
+
+- `services/`
+  - Contains shared logic used by both Lambda and local server.
 
 ## 🚀 Features
 
@@ -53,6 +62,12 @@ Custom Support Manual including:
 - Semantic search using vector embeddings.
 - Real-time command status indicators. (green: success, red: error)
 - Displays retrieval results, LLM responses, model details, metrics, and sources references.
+
+## 💬 Example Queries
+
+- "What is your refund policy?"
+- "How long does shipping take?"
+- "Can I cancel my order?"
 
 ## 🛠 Tech Stack
 
@@ -68,6 +83,16 @@ Custom Support Manual including:
 - AWS Lambda
 - Amazon API Gateway
 - Amazon S3 Vectors
+
+## 📈 API Configuration
+
+API dynamically switches API endpoints based on the environment.
+
+- In development:  
+  The app connects to a local Node.js server at `http://localhost:5173/api`.
+
+- In production:  
+  The app uses a base path `/api`, which is routed through CloudFront to API Gateway and Lambda.
 
 ## 📦 Installation
 
