@@ -1,4 +1,4 @@
-import { ragService } from "./services/ragService.js";
+import { ragService } from "../services/ragService.js";
 
 export const handler = async (e) => {
   try {

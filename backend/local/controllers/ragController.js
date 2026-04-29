@@ -2,7 +2,7 @@
 local use
 */
 
-import { ragService } from "../services/ragService.js";
+import { ragService } from "../../services/ragService.js";
 
 export const ragController = async (req, res) => {
   try {
