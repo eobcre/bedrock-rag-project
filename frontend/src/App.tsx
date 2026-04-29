@@ -40,7 +40,7 @@ const App = () => {
     setLoading(true);
 
     try {
-      const res = await fetch(`/api/rag`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/rag`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -64,44 +64,6 @@ const App = () => {
       setLoading(false);
     }
   };
-
-  // local test use
-  // const handleSendRag = async () => {
-  //   // console.log(query, retrieval, topK);
-
-  //   if (!query || !topK) {
-  //     setValidationError("* All fields are required.");
-  //     return;
-  //   }
-
-  //   setValidationError("");
-  //   setLoading(true);
-
-  //   try {
-  //     const res = await fetch(`${import.meta.env.VITE_API_URL}/api/rag`, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         query,
-  //         topK: Number(topK),
-  //       }),
-  //     });
-
-  //     const data = await res.json();
-  //     // console.log("data:", data);
-  //     setRagData(data);
-  //     setActive(true);
-  //     setError(false);
-  //   } catch (err) {
-  //     console.error(err);
-  //     setActive(false);
-  //     setError(true);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
 
   // console.log("ragData:", ragData);
 
