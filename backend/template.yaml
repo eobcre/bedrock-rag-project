@@ -1,0 +1,36 @@
+Parameters:
+  LambdaRoleArn:
+    Type: String
+    NoEcho: true
+  S3BucketName:
+    Type: String
+    NoEcho: true
+  S3Key:
+    Type: String
+    NoEcho: true
+  KnowledgeBaseId:
+    Type: String
+    NoEcho: true
+  ModelId:
+    Type: String
+    NoEcho: true
+
+Resources:
+  RagFunction:
+    Type: AWS::Lambda::Function
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      FunctionName: rag-api
+      Runtime: nodejs24.x
+      Handler: index.handler
+      Role: !Ref LambdaRoleArn
+      MemorySize: 128
+      Timeout: 30
+      Environment:
+        Variables:
+          KNOWLEDGE_BASE_ID: !Ref KnowledgeBaseId
+          MODEL_ID: !Ref ModelId
+      Code:
+        S3Bucket: !Ref S3BucketName
+        S3Key: !Ref S3Key
