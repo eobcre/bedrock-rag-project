@@ -80,9 +80,12 @@ Backend is designed to separate development and production environments while sh
 
 - Amazon Bedrock
 - Amazon Bedrock Knowledge Base
+- AWS SAM
 - AWS Lambda
 - Amazon API Gateway
 - Amazon S3 Vectors
+
+Note: AWS Lambda is managed via AWS SAM.
 
 ## 📈 API Configuration
 
