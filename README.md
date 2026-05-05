@@ -85,7 +85,7 @@ Backend is designed to separate development and production environments while sh
 - Amazon API Gateway
 - Amazon S3 Vectors
 
-Note: AWS Lambda is managed via AWS SAM.
+> Note: AWS Lambda is managed via AWS SAM.
 
 ## 📈 API Configuration
 
