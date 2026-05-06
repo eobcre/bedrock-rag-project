@@ -89,10 +89,4 @@ KNOWLEDGE_BASE_ID=your_knowledge_base_id
 MODEL_ID=your_model_id
 ```
 
-**Run Locally**
-
-```
-npm run dev
-```
-
-Note: This application requires a deployed AWS backend. (API Gateway, Lambda and Bedrock)
+> Note: This application requires a deployed AWS backend. (API Gateway, Lambda and Bedrock)
