@@ -40,7 +40,7 @@ const App = () => {
     setLoading(true);
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/rag`, {
+      const res = await fetch(`/api/rag`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
