@@ -1,36 +1,64 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+
 Parameters:
-  LambdaRoleArn:
-    Type: String
-    NoEcho: true
-  S3BucketName:
-    Type: String
-    NoEcho: true
-  S3Key:
-    Type: String
-    NoEcho: true
   KnowledgeBaseId:
     Type: String
     NoEcho: true
-  ModelId:
+  ModelArn:
     Type: String
     NoEcho: true
 
+Globals:
+  Function:
+    Runtime: nodejs24.x
+    Timeout: 30
+    MemorySize: 128
+
 Resources:
-  RagFunction:
-    Type: AWS::Lambda::Function
-    DeletionPolicy: Retain
-    UpdateReplacePolicy: Retain
+  RagApi:
+    Type: AWS::Serverless::Api
     Properties:
-      FunctionName: rag-api
-      Runtime: nodejs24.x
+      Name: rag-api-sam
+      StageName: prod
+
+      Cors:
+        AllowMethods: "'POST,OPTIONS'"
+        AllowHeaders: "'Content-Type,x-api-key'"
+        AllowOrigin: "'*'"
+
+  RagFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: rag-api-sam
+
+      CodeUri: src/
+
       Handler: index.handler
-      Role: !Ref LambdaRoleArn
-      MemorySize: 128
-      Timeout: 30
+
       Environment:
         Variables:
           KNOWLEDGE_BASE_ID: !Ref KnowledgeBaseId
-          MODEL_ID: !Ref ModelId
-      Code:
-        S3Bucket: !Ref S3BucketName
-        S3Key: !Ref S3Key
+          MODEL_ARN: !Ref ModelArn
+
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - bedrock:Retrieve
+                - bedrock:RetrieveAndGenerate
+                - bedrock:GetKnowledgeBase
+                - bedrock:InvokeModel
+              Resource: "*"
+
+      Events:
+        RagEndpoint:
+          Type: Api
+          Properties:
+            RestApiId: !Ref RagApi
+            Path: /api/rag
+            Method: post
+
+Outputs:
+  ApiUrl:
+    Value: !Sub "https://${RagApi}.execute-api.${AWS::Region}.amazonaws.com/prod/api/rag"
