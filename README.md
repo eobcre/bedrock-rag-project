@@ -40,21 +40,6 @@ Custom Support Manual including:
   <sub>Architecture diagram created with Lucidchart</sub>
 </p>
 
-## 🛠️ Backend Architecture
-
-Backend is designed to separate development and production environments while sharing the same service logic.
-
-- `lambda/`
-  - Entry point for AWS Lambda. (`index.js`)
-  - Handles API Gateway requests.
-
-- `local/`
-  - Express.js server for local development. (`server.js`)
-  - Includes routes and controllers.
-
-- `services/`
-  - Contains shared logic used by both Lambda and local server.
-
 ## 🚀 Features
 
 - RAG based context retrieval for accurate responses.
@@ -86,16 +71,6 @@ Backend is designed to separate development and production environments while sh
 - Amazon S3 Vectors
 
 > Note: AWS Lambda + Amazon API Gateway is managed via AWS SAM.
-
-## 📈 API Configuration
-
-API dynamically switches API endpoints based on the environment.
-
-- In development:  
-  The app connects to a local Node.js server at `http://localhost:5173/api`.
-
-- In production:  
-  The app uses a base path `/api`, which is routed through CloudFront to API Gateway and Lambda.
 
 ## 📦 Installation
 
