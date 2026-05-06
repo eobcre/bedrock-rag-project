@@ -97,6 +97,10 @@ MODEL_ID=your_model_id
 
 - [AWS SAM resources and properties](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-specification-resources-and-properties.html)
 
-- [Tutorial: Deploy a Hello World application with AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-getting-started-hello-world.html?utm_source=chatgpt.com)
+- [Tutorial: Deploy a Hello World application with AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-getting-started-hello-world.html)
 
-- [AWS::Serverless::Api](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-api.html?utm_source=chatgpt.com)
+- [AWS::Serverless::HttpApi](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-httpapi.html)
+
+- [Enforce CloudFront-Only Access for AWS API Gateway](https://pubudu.dev/posts/access-api-gw-rest-api-only-from-cloudfront/)
+
+- [Protecting APIs with custom headers in CloudFront](https://arpadt.com/articles/protecting-apis-with-cloudfront)
