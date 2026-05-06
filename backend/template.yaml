@@ -16,21 +16,27 @@ Globals:
     MemorySize: 128
 
 Resources:
-  RagApi:
-    Type: AWS::Serverless::Api
+  RagHttpApi:
+    Type: AWS::Serverless::HttpApi
     Properties:
-      Name: rag-api-sam
-      StageName: prod
+      Name: sam-rag-api
 
-      Cors:
-        AllowMethods: "'POST,OPTIONS'"
-        AllowHeaders: "'Content-Type,x-api-key'"
-        AllowOrigin: "'*'"
+    CorsConfiguration:
+      AllowMethods:
+        - POST
+        - OPTIONS
+
+      AllowHeaders:
+        - Content-Type
+        - x-api-key
+
+      AllowOrigins:
+        - "*"
 
   RagFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: rag-api-sam
+      FunctionName: sam-rag-api
 
       CodeUri: src/
 
@@ -53,12 +59,12 @@ Resources:
 
       Events:
         RagEndpoint:
-          Type: Api
+          Type: HttpApi
           Properties:
-            RestApiId: !Ref RagApi
+            ApiId: !Ref RagHttpApi
             Path: /api/rag
-            Method: post
+            Method: POST
 
 Outputs:
   ApiUrl:
-    Value: !Sub "https://${RagApi}.execute-api.${AWS::Region}.amazonaws.com/prod/api/rag"
+    Value: !Sub "https://${RagHttpApi}.execute-api.${AWS::Region}.amazonaws.com/api/rag"
