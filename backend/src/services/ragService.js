@@ -2,7 +2,7 @@ import { knowledgeBaseService, getKnowledgeBaseInfo } from "./knowledgeBaseServi
 
 export const ragService = async ({ query, topK }) => {
   // console.log("KNOWLEDGE_BASE_ID:", process.env.KNOWLEDGE_BASE_ID);
-  // console.log("MODEL_ID:", process.env.MODEL_ID);
+  // console.log("MODEL_ARN:", process.env.MODEL_ARN);
   // console.log("AWS_REGION:", process.env.AWS_REGION);
 
   const { res: kbRes, totalLatency } = await knowledgeBaseService({ query, topK });
@@ -32,7 +32,7 @@ export const ragService = async ({ query, topK }) => {
     retrieveChunks,
     retrieveChunksCount: retrieveChunks.length,
     sources,
-    model: process.env.MODEL_ID,
+    model: process.env.MODEL_ARN,
     embeddingModel,
     vectorStoreType,
   };

@@ -23,7 +23,7 @@ export const knowledgeBaseService = async ({ query, topK }) => {
       type: "KNOWLEDGE_BASE",
       knowledgeBaseConfiguration: {
         knowledgeBaseId: process.env.KNOWLEDGE_BASE_ID,
-        modelArn: process.env.MODEL_ID,
+        modelArn: process.env.MODEL_ARN,
         retrievalConfiguration: {
           vectorSearchConfiguration: {
             numberOfResults: Number(topK),
