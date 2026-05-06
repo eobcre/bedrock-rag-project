@@ -23,7 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 samconfig.toml
-resources-to-import.json
+.aws-sam
 
 .env
 .env.development
