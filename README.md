@@ -82,10 +82,10 @@ Backend is designed to separate development and production environments while sh
 - Amazon Bedrock Knowledge Base
 - AWS SAM
 - AWS Lambda
-- Amazon API Gateway
+- Amazon API Gateway (HTTP API)
 - Amazon S3 Vectors
 
-> Note: AWS Lambda is managed via AWS SAM.
+> Note: AWS Lambda + Amazon API Gateway is managed via AWS SAM.
 
 ## 📈 API Configuration
 
