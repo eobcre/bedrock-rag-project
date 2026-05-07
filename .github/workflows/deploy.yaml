@@ -29,13 +29,6 @@ jobs:
       - name: SAM build
         working-directory: backend
         run: sam build
-      
-      - name: Check SAM config
-        working-directory: backend
-        run: |
-          pwd
-          ls -la
-          cat samconfig.toml
 
       - name: SAM deploy
         working-directory: backend
