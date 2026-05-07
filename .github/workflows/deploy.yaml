@@ -41,7 +41,14 @@ jobs:
         working-directory: backend
         run: |
           sam deploy \
-            --config-file samconfig.toml \
-            --config-env default \
-            --no-confirm-changeset \
-            --no-fail-on-empty-changeset
+          --stack-name ${{ secrets.STACK_NAME }} \
+          --s3-bucket ${{ secrets.SAM_BUCKET }} \
+          --s3-prefix rag-api \
+          --region ${{ secrets.AWS_REGION }} \
+          --capabilities CAPABILITY_IAM \
+          --parameter-overrides \
+            KnowledgeBaseId=${{ secrets.KNOWLEDGE_BASE_ID }} \
+            XXXArn=${{ secrets.MODEL_ARN }} \
+            OriginSecret=${{ secrets.ORIGIN_SECRET }} \
+          --no-confirm-changeset \
+          --no-fail-on-empty-changeset
