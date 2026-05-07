@@ -69,8 +69,9 @@ Custom Support Manual including:
 - AWS Lambda
 - Amazon API Gateway (HTTP API)
 - Amazon S3 Vectors
+- GitHub Actions
 
-> Note: AWS Lambda + Amazon API Gateway is managed via AWS SAM.
+> Note: AWS Lambda + Amazon API Gateway are managed and deployed via AWS SAM and GitHub Actions.
 
 ## 📦 Installation
 
