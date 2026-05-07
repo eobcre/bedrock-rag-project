@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+    
+    paths:
+      - "backend/src/**"
+      - "backend/template.yaml"
+      - ".github/workflows/**"
 
 permissions:
   id-token: write
@@ -40,8 +45,7 @@ jobs:
           --region ${{ secrets.AWS_REGION }} \
           --capabilities CAPABILITY_IAM \
           --parameter-overrides \
-            KnowledgeBaseId=${{ secrets.KNOWLEDGE_BASE_ID }} \
-            ModelArn=${{ secrets.MODEL_ARN }} \
+            EndpointName=${{ secrets.ENDPOINT_NAME }} \
             OriginSecret=${{ secrets.ORIGIN_SECRET }} \
           --no-confirm-changeset \
           --no-fail-on-empty-changeset
