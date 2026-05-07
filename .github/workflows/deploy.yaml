@@ -48,7 +48,7 @@ jobs:
           --capabilities CAPABILITY_IAM \
           --parameter-overrides \
             KnowledgeBaseId=${{ secrets.KNOWLEDGE_BASE_ID }} \
-            XXXArn=${{ secrets.MODEL_ARN }} \
+            ModelArn=${{ secrets.MODEL_ARN }} \
             OriginSecret=${{ secrets.ORIGIN_SECRET }} \
           --no-confirm-changeset \
           --no-fail-on-empty-changeset
