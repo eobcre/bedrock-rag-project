@@ -65,10 +65,10 @@ Custom Support Manual including:
 
 - Amazon Bedrock
 - Amazon Bedrock Knowledge Base
-- AWS SAM
 - AWS Lambda
 - Amazon API Gateway (HTTP API)
 - Amazon S3 Vectors
+- AWS SAM
 - GitHub Actions
 
 > Note: AWS Lambda + Amazon API Gateway are managed and deployed via AWS SAM and GitHub Actions.
