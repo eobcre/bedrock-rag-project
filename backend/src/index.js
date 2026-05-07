@@ -1,19 +1,19 @@
 import { ragService } from "./services/ragService.js";
 
-const SECRET = process.env.ORIGIN_SECRET;
+// const SECRET = process.env.ORIGIN_SECRET;
 
 export const handler = async (e) => {
-  const header = e.headers?.["x-origin-verify"];
+  // const header = e.headers?.["x-origin-verify"];
 
-  if (header !== SECRET) {
-    return {
-      statusCode: 403,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ message: "Forbidden..." }),
-    };
-  }
+  // if (header !== SECRET) {
+  //   return {
+  //     statusCode: 403,
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ message: "Forbidden..." }),
+  //   };
+  // }
 
   try {
     const body = e?.body ? JSON.parse(e.body) : {};
