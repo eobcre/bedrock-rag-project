@@ -105,3 +105,5 @@ MODEL_ID=your_model_id
 - [Enforce CloudFront-Only Access for AWS API Gateway](https://pubudu.dev/posts/access-api-gw-rest-api-only-from-cloudfront/)
 
 - [Protecting APIs with custom headers in CloudFront](https://arpadt.com/articles/protecting-apis-with-cloudfront)
+
+- [GitHub Actions to deploy with AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/deploying-using-github.html)
