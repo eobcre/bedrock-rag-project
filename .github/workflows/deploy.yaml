@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-    
+
     paths:
       - "backend/src/**"
       - "backend/template.yaml"
@@ -45,7 +45,8 @@ jobs:
           --region ${{ secrets.AWS_REGION }} \
           --capabilities CAPABILITY_IAM \
           --parameter-overrides \
-            EndpointName=${{ secrets.ENDPOINT_NAME }} \
+            KnowledgeBaseId=${{ secrets.KNOWLEDGE_BASE_ID }} \
+            ModelArn=${{ secrets.MODEL_ARN }} \
             OriginSecret=${{ secrets.ORIGIN_SECRET }} \
           --no-confirm-changeset \
           --no-fail-on-empty-changeset
