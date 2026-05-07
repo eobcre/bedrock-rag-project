@@ -27,9 +27,11 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: SAM build
+        working-directory: backend
         run: sam build
 
       - name: SAM deploy
+        working-directory: backend
         run: |
           sam deploy \
             --no-confirm-changeset \
