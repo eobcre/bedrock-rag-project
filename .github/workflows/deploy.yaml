@@ -31,6 +31,19 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
 
+      # test
+      - name: Install backend dependencies
+        working-directory: backend/src
+        run: npm ci
+
+      - name: Run Lambda tests
+        working-directory: backend/src
+        run: npm test
+
+      - name: Remove test files before build
+        run: rm -rf backend/src/test
+
+      # sam
       - name: SAM build
         working-directory: backend
         run: sam build
