@@ -73,24 +73,6 @@ Custom Support Manual including:
 
 > Note: AWS Lambda + Amazon API Gateway are managed and deployed via AWS SAM and GitHub Actions.
 
-## 📦 Installation
-
-Clone the repository and install dependencies.
-
-```bash
-git clone https://github.com/eobcre/bedrock-rag-project.git
-cd bedrock-rag-project
-npm install
-```
-
-**Environment Variables**
-
-```
-KNOWLEDGE_BASE_ID=your_knowledge_base_id
-MODEL_ID=your_model_id
-```
-
-> Note: This application requires a deployed AWS backend. (API Gateway, Lambda and Bedrock)
 
 ## 📚 References
 
